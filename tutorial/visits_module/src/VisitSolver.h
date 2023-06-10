@@ -49,17 +49,19 @@ public:
     vector <string> source, target; 
     string starting_position;
      
-   
+    double dst;
    
     void parseParameters(string parameters);
+    
  
 
 private:
     list<string> affected;
     list<string> dependencies;
+    
       
     double calculateExtern(double external, double total_cost);
-    //void localize(string from, string to);
+    void distance_euc(string from, string to);
     vector<string> findParameters(string line, int&n);
 
 };

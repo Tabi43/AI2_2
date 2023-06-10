@@ -7,12 +7,12 @@
 )
 
 (:predicates
-		(robot_in ?v - robot ?r - region) (visited ?r - region )
+	(robot_in ?v - robot ?r - region) (visited ?r - region )
 	      
 )
 
 (:functions 
-		(act-cost) (triggered ?from ?to - region) (dummy)
+	(act-cost) (triggered ?from ?to - region) (dummy)
 )
 
 (:durative-action goto_region
