@@ -34,7 +34,8 @@ void RoadMap::buildMap(map<string, vector<double>> waypoint){
             vector<double> pos = et->second;
             double dst = sqrt(pow(position[0] - pos[0], 2) + pow(position[1] - pos[1], 2));
             distances[name] = dst;
-        }        
+        }
+        //dovrebbe essere k non 5       
         for(int i = 0; i < 5; i++){
             double min = INT_MAX;
             string index;
@@ -53,6 +54,9 @@ void RoadMap::buildMap(map<string, vector<double>> waypoint){
 }
 
 vector<string> RoadMap::findPath(string from, string to){
+    //from and to sono già waypoint in VisitSolver faremo landmark-waypoint closest
+    //usare algoritmo di djikstra
+    
     
 }
 
