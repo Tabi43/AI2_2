@@ -18,6 +18,7 @@ struct Waypoint {
 
 Graph::Graph(int n){
     number_of_vertices = n;        
+    adjacencyList = vector<vector<Edge>>(number_of_vertices);
 }
 
 Graph::~Graph(){
@@ -27,11 +28,12 @@ Graph::~Graph(){
 // Add an edge to the graph
 void Graph::addEdge(int source, int destination, double weight) {
     adjacencyList[source].emplace_back(source, destination, weight);
-    adjacencyList[destination].emplace_back(destination, source, weight);
 }
 
 // Dijkstra's algorithm implementation
-pair<double, vector<string>> Graph::dijkstra(int source, int target) {
+pair<double, vector<string>> Graph::dijkstra(string s, string t) {
+    int source = parseWayPoint(s);
+    int target = parseWayPoint(t);
     vector<double> distances(number_of_vertices, numeric_limits<double>::max());
     distances[source] = 0.0;
     // Create a min-heap priority queue of vertices (ordered by distance)
@@ -76,7 +78,7 @@ pair<double, vector<string>> Graph::dijkstra(int source, int target) {
 
 void Graph::print() {
     for(int i = 0; i < number_of_vertices; i++){
-       for(int j = 0; j < 5; j++){
+       for(int j = 0; j < (int)adjacencyList[i].size(); j++){
             cout << adjacencyList[i][j].source << " " << adjacencyList[i][j].destination << " " << adjacencyList[i][j].weight << endl;
        }
     }
@@ -110,7 +112,7 @@ void Graph::buildRoadMap(map<string, vector<double>> waypoint){
             int destination = parseWayPoint(index);
             addEdge(source, destination, distances[index]);
             distances[index] = INT_MAX;
-        }   
+        } 
     }
 }
 

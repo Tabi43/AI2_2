@@ -34,7 +34,7 @@
 using namespace std;
 using namespace arma;
 
-Graph roadMap = Graph(24);
+Graph roadMap = Graph(30);
 
 //map <string, vector<double> > region_mapping;
 
@@ -198,7 +198,7 @@ void VisitSolver::parseWaypoint(string waypoint_file){
       waypoint[waypoint_name] = vector<double> {pose1, pose2, pose3};
     }
     roadMap.buildRoadMap(waypoint);
-    //roadMap.print();
+    roadMap.print();
   }
 }
 
@@ -230,15 +230,23 @@ void VisitSolver::parseLandmark(string landmark_file){
 
 
 void VisitSolver::distance_euc( string from, string to){
+    /*
+    vector<string> ifrom = region_mapping.at(from);
+    vector<string> ito = region_mapping.at(to);
 
-  vector<string> ifrom = region_mapping.at(from);
-  vector<string> ito = region_mapping.at(to);
+    vector<double> pos_from = waypoint.at(ifrom[0]);
+    vector<double> pos_to = waypoint.at(ito[0]);
 
-  vector<double> pos_from = waypoint.at(ifrom[0]);
-  vector<double> pos_to = waypoint.at(ito[0]);
+    dst = sqrt(pow(pos_from[0] - pos_to[0], 2) + pow(pos_from[1] - pos_to[1], 2));
+    */
+  
+    vector<string> ifrom = region_mapping.at(from);
+    vector<string> ito = region_mapping.at(to);
 
-  dst = sqrt(pow(pos_from[0] - pos_to[0], 2) + pow(pos_from[1] - pos_to[1], 2));
+    pair<double, std::vector<std::string>> path = roadMap.dijkstra(ifrom[0], ito[0]);
 
+    dst = path.first;
+    
 } 
 
 

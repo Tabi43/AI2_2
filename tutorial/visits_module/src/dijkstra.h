@@ -27,7 +27,7 @@ class Graph {
         ~Graph();
 
         /*Minimun path from source to target*/
-        pair<double, vector<string>> dijkstra(int source, int target);
+        pair<double, vector<string>> dijkstra(string source, string target);
         void buildRoadMap(map<string, vector<double>> waypoint);
         void print();
 
