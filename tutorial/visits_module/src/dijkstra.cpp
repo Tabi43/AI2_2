@@ -1,122 +1,129 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <limits>
-#include <cmath>
-#include <stack>
-#include <algorithm>
-#include <utility>
-#include <functional>
-using namespace std;
+#include "dijkstra.h"
+
 // Structure to represent a vertex in the graph
 struct Vertex {
     int id;
     double distance;
     Vertex(int _id, double _distance) : id(_id), distance(_distance) {}
-    };
-    // Structure to represent an edge in the graph
-struct Edge {
-    int source;
-    int destination;
-    double weight;
-    Edge(int _source, int _destination, double _weight) : source(_source), destination(_destination), weight(_weight) {}
-    };
-class Graph {
-    int V;  // number of vertices
-    vector<vector<Edge>> adjacencyList;
-public:
-    Graph(int v) : V(v), adjacencyList(v) {}
-    // Add an edge to the graph
-    void addEdge(int source, int destination, double weight) {
-        adjacencyList[source].emplace_back(source, destination, weight);
-        adjacencyList[destination].emplace_back(destination, source, weight);
-    }
-    // Dijkstra's algorithm implementation
-    pair<double, vector<int>> dijkstra(int source, int target) {
-        vector<double> distances(V, numeric_limits<double>::max());
-        distances[source] = 0.0;
-        // Create a min-heap priority queue of vertices (ordered by distance)
-        priority_queue<Vertex, vector<Vertex>, function<bool(const Vertex&, const Vertex&)>> pq(
-            [](const Vertex& v1, const Vertex& v2) {
-                return v1.distance > v2.distance;
-            }
-        );
-        // Add the source vertex to the priority queue
-        pq.push(Vertex(source, 0.0));
-        // Array to store the previous node in the shortest path
-        vector<int> path(V, -1);
-        // Dijkstra's algorithm loop
-        while (!pq.empty()) {
-            int u = pq.top().id;
-            pq.pop();
-            // Traverse all neighboring vertices of u
-            for (const auto& edge : adjacencyList[u]) {
-                int v = edge.destination;
-                double weight = edge.weight;
-                // If a shorter path is found, update the distance and enqueue the vertex
-                if (distances[u] + weight < distances[v]) {
-                    distances[v] = distances[u] + weight;
-                    path[v] = u;
-                    pq.push(Vertex(v, distances[v]));
-                }
-            }
-        }
-        //compute path to go to target
-        vector<int> path_trace;
-        int node = target;
-        // Follow the path from the target vertex to the source vertex
-        while (node != -1) {
-            path_trace.push_back(node);
-            node = path[node];
-        }
-        // Reverse the path to get the correct order
-        reverse(path_trace.begin(), path_trace.end());
-        // Return the distances and path array
-        return make_pair(distances[target], path_trace);
-    }
-
-    // Trace the path from the source to the target vertex
-    vector<int> getPath(int source, int target, const vector<int>& path) {
-        vector<int> path_trace;
-        int node = target;
-        // Follow the path from the target vertex to the source vertex
-        while (node != -1) {
-            path_trace.push_back(node);
-            node = path[node];
-        }
-        // Reverse the path to get the correct order
-        reverse(path_trace.begin(), path_trace.end());
-        return path_trace;
-    }
 };
-/*int main() {
-    int V = 28;  // total number of vertices (including the initial position and submission desk)
-    Graph g(V);
- 
-    // Add edges to the graph
-    // ...
- 
-    // Perform Dijkstra's algorithm from the initial position (0)
-    pair<vector<double>, vector<int>> result = g.dijkstra(0,10);
-    vector<double>& distances = result.first;
-    vector<int>& path = result.second;
- 
-    // Print the shortest distances to all vertices
-    for (int i = 0; i < V; ++i) {
-        cout << "Distance to vertex " << i << ": " << distances[i] << endl;
-    }
- 
-    // Trace the path from the source to a target vertex (e.g., vertex 10)
-    int targetVertex = 10;
-    vector<int> shortestPath = g.getPath(0, targetVertex, path);
- 
-    // Print the shortest path from the source to the target vertex
-    cout << "Shortest path from source to vertex " << targetVertex << ":" << endl;
-    for (int vertex : shortestPath) {
-        cout << vertex << " -> ";
-    }
-    cout << endl;
- 
-    return 0;
+
+//Structure to represent a waypoint
+struct Waypoint {
+    int index;
+    double x;
+    double y;
+    double theta;
+    Waypoint(int _index, double _x, double _y, double _theta) : index(_index), x(_x), y(_y), theta(_theta) {} 
+};
+
+Graph::Graph(int n){
+    number_of_vertices = n;        
 }
-*/
+
+Graph::~Graph(){
+
+}
+
+// Add an edge to the graph
+void Graph::addEdge(int source, int destination, double weight) {
+    adjacencyList[source].emplace_back(source, destination, weight);
+    adjacencyList[destination].emplace_back(destination, source, weight);
+}
+
+// Dijkstra's algorithm implementation
+pair<double, vector<string>> Graph::dijkstra(int source, int target) {
+    vector<double> distances(number_of_vertices, numeric_limits<double>::max());
+    distances[source] = 0.0;
+    // Create a min-heap priority queue of vertices (ordered by distance)
+    priority_queue<Vertex, vector<Vertex>, function<bool(const Vertex&, const Vertex&)>> pq(
+        [](const Vertex& v1, const Vertex& v2) {
+            return v1.distance > v2.distance;
+        }
+    );
+    // Add the source vertex to the priority queue
+    pq.push(Vertex(source, 0.0));
+    // Array to store the previous node in the shortest path
+    vector<int> path(number_of_vertices, -1);
+    // Dijkstra's algorithm loop
+    while (!pq.empty()) {
+        int u = pq.top().id;
+        pq.pop();
+        // Traverse all neighboring vertices of u
+        for (const auto& edge : adjacencyList[u]) {
+            int v = edge.destination;
+            double weight = edge.weight;
+            // If a shorter path is found, update the distance and enqueue the vertex
+            if (distances[u] + weight < distances[v]) {
+                distances[v] = distances[u] + weight;
+                path[v] = u;
+                pq.push(Vertex(v, distances[v]));
+            }
+        }
+    }
+    //compute path to go to target
+    vector<string> path_trace;
+    int node = target;
+    // Follow the path from the target vertex to the source vertex
+    while (node != -1) {
+        path_trace.push_back(convertToWayPoint(node));
+        node = path[node];
+    }
+    // Reverse the path to get the correct order
+    reverse(path_trace.begin(), path_trace.end());
+    // Return the distances and path array
+    return make_pair(distances[target], path_trace);
+}
+
+void Graph::print() {
+    for(int i = 0; i < number_of_vertices; i++){
+       for(int j = 0; j < 5; j++){
+            cout << adjacencyList[i][j].source << " " << adjacencyList[i][j].destination << " " << adjacencyList[i][j].weight << endl;
+       }
+    }
+}
+
+/*Method to create the graph*/
+void Graph::buildRoadMap(map<string, vector<double>> waypoint){
+    int number_of_nodes = (int)waypoint.size();
+    for (std::map<string, vector<double>>::iterator it = waypoint.begin(); it != waypoint.end(); ++it) {
+        string wayPointName = it->first;
+        vector<double> position = it->second;
+        map<string, double> distances;
+        for (std::map<string, vector<double>>::iterator et = waypoint.begin(); et != waypoint.end(); ++et) {
+            string name = et->first;
+            vector<double> pos = et->second;
+            double dst = INT_MAX; 
+            if(name != wayPointName) dst = sqrt(pow(position[0] - pos[0], 2) + pow(position[1] - pos[1], 2));
+            distances[name] = dst;
+        }
+        //dovrebbe essere k non 5       
+        for(int i = 0; i < 5; i++){
+            double min = INT_MAX;
+            string index;
+            for (std::map<string, double>::iterator d = distances.begin(); d != distances.end(); ++d) {
+                if(min > d->second){
+                    min = d->second;
+                    index = d->first;
+                }  
+            }
+            int source = parseWayPoint(wayPointName);
+            int destination = parseWayPoint(index);
+            addEdge(source, destination, distances[index]);
+            distances[index] = INT_MAX;
+        }   
+    }
+}
+
+/*Function which return the waypoint index by its name*/
+int Graph::parseWayPoint(string wayPointName){
+    string name = wayPointName.erase(0,2);
+    std::istringstream iss(name);
+    int result;
+    iss >> result;
+    return result;
+}
+
+string Graph::convertToWayPoint(int n) {
+    std::string result = "wp" + std::to_string(n);
+    return result;
+}

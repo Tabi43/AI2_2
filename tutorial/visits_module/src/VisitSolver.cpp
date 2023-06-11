@@ -26,12 +26,15 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include "dijkstra.h"
 
 #include "armadillo"
 #include <initializer_list>
 
 using namespace std;
 using namespace arma;
+
+Graph roadMap = Graph(24);
 
 //map <string, vector<double> > region_mapping;
 
@@ -194,6 +197,8 @@ void VisitSolver::parseWaypoint(string waypoint_file){
 
       waypoint[waypoint_name] = vector<double> {pose1, pose2, pose3};
     }
+    roadMap.buildRoadMap(waypoint);
+    //roadMap.print();
   }
 }
 

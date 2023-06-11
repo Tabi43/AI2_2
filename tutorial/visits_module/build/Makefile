@@ -199,6 +199,33 @@ VisitSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/VisitSolver.cpp.s
 .PHONY : VisitSolver.cpp.s
 
+dijkstra.o: dijkstra.cpp.o
+.PHONY : dijkstra.o
+
+# target to build an object file
+dijkstra.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/dijkstra.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/dijkstra.cpp.o
+.PHONY : dijkstra.cpp.o
+
+dijkstra.i: dijkstra.cpp.i
+.PHONY : dijkstra.i
+
+# target to preprocess a source file
+dijkstra.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/dijkstra.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/dijkstra.cpp.i
+.PHONY : dijkstra.cpp.i
+
+dijkstra.s: dijkstra.cpp.s
+.PHONY : dijkstra.s
+
+# target to generate assembly for a file
+dijkstra.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/dijkstra.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/dijkstra.cpp.s
+.PHONY : dijkstra.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -239,6 +266,9 @@ help:
 	@echo "... VisitSolver.o"
 	@echo "... VisitSolver.i"
 	@echo "... VisitSolver.s"
+	@echo "... dijkstra.o"
+	@echo "... dijkstra.i"
+	@echo "... dijkstra.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
