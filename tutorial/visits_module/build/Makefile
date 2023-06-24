@@ -199,33 +199,6 @@ VisitSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/VisitSolver.cpp.s
 .PHONY : VisitSolver.cpp.s
 
-dijkstra.o: dijkstra.cpp.o
-.PHONY : dijkstra.o
-
-# target to build an object file
-dijkstra.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/dijkstra.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/dijkstra.cpp.o
-.PHONY : dijkstra.cpp.o
-
-dijkstra.i: dijkstra.cpp.i
-.PHONY : dijkstra.i
-
-# target to preprocess a source file
-dijkstra.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/dijkstra.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/dijkstra.cpp.i
-.PHONY : dijkstra.cpp.i
-
-dijkstra.s: dijkstra.cpp.s
-.PHONY : dijkstra.s
-
-# target to generate assembly for a file
-dijkstra.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/dijkstra.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/dijkstra.cpp.s
-.PHONY : dijkstra.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -250,6 +223,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+roadMap.o: roadMap.cpp.o
+.PHONY : roadMap.o
+
+# target to build an object file
+roadMap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/roadMap.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/roadMap.cpp.o
+.PHONY : roadMap.cpp.o
+
+roadMap.i: roadMap.cpp.i
+.PHONY : roadMap.i
+
+# target to preprocess a source file
+roadMap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/roadMap.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/roadMap.cpp.i
+.PHONY : roadMap.cpp.i
+
+roadMap.s: roadMap.cpp.s
+.PHONY : roadMap.s
+
+# target to generate assembly for a file
+roadMap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Visits.dir/build.make CMakeFiles/Visits.dir/roadMap.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisitMain.dir/build.make CMakeFiles/VisitMain.dir/roadMap.cpp.s
+.PHONY : roadMap.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -266,12 +266,12 @@ help:
 	@echo "... VisitSolver.o"
 	@echo "... VisitSolver.i"
 	@echo "... VisitSolver.s"
-	@echo "... dijkstra.o"
-	@echo "... dijkstra.i"
-	@echo "... dijkstra.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... roadMap.o"
+	@echo "... roadMap.i"
+	@echo "... roadMap.s"
 .PHONY : help
 
 

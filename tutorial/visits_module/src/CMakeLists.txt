@@ -11,6 +11,6 @@ set(CMAKE_CXX_FLAGS "-Wall -std=gnu++11 ${CMAKE_CXX_FLAGS}")
 
 
 
-add_library(Visits SHARED VisitSolver.cpp ExternalSolver.cpp dijkstra.cpp)
-add_executable(VisitMain VisitSolver.cpp ExternalSolver.cpp main.cpp dijkstra.cpp)
+add_library(Visits SHARED VisitSolver.cpp ExternalSolver.cpp roadMap.cpp)
+add_executable(VisitMain VisitSolver.cpp ExternalSolver.cpp main.cpp roadMap.cpp)
 

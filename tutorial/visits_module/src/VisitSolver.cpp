@@ -26,7 +26,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-#include "dijkstra.h"
+#include "roadMap.h"
 
 #include "armadillo"
 #include <initializer_list>

@@ -3,10 +3,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/VisitMain.dir/ExternalSolver.cpp.o.d"
   "CMakeFiles/VisitMain.dir/VisitSolver.cpp.o"
   "CMakeFiles/VisitMain.dir/VisitSolver.cpp.o.d"
-  "CMakeFiles/VisitMain.dir/dijkstra.cpp.o"
-  "CMakeFiles/VisitMain.dir/dijkstra.cpp.o.d"
   "CMakeFiles/VisitMain.dir/main.cpp.o"
   "CMakeFiles/VisitMain.dir/main.cpp.o.d"
+  "CMakeFiles/VisitMain.dir/roadMap.cpp.o"
+  "CMakeFiles/VisitMain.dir/roadMap.cpp.o.d"
   "VisitMain"
   "VisitMain.pdb"
 )

@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Visits.dir/ExternalSolver.cpp.o.d"
   "CMakeFiles/Visits.dir/VisitSolver.cpp.o"
   "CMakeFiles/Visits.dir/VisitSolver.cpp.o.d"
-  "CMakeFiles/Visits.dir/dijkstra.cpp.o"
-  "CMakeFiles/Visits.dir/dijkstra.cpp.o.d"
+  "CMakeFiles/Visits.dir/roadMap.cpp.o"
+  "CMakeFiles/Visits.dir/roadMap.cpp.o.d"
   "libVisits.pdb"
   "libVisits.so"
 )
