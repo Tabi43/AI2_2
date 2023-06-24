@@ -3,16 +3,16 @@
 (:requirements :typing :durative-actions :numeric-fluents :negative-preconditions :action-costs :conditional-effects :equality :fluents )
 
 
-(:types 	robot region 
+(:types 	robot region ass
 )
 
 (:predicates
-	(robot_in ?v - robot ?r - region) (visited ?r - region )
+	(robot_in ?v - robot ?r - region) (visited ?r - region ) (ass_in ?a - ass ?x - region) (on_robot ?a - ass) (sub_desk ?r - region)
 	      
 )
 
 (:functions 
-	(act-cost) (triggered ?from ?to - region) (dummy)
+	(act-cost) (triggered ?from ?to - region) (dummy)  (ass_on_rob)
 )
 
 (:durative-action goto_region
@@ -24,12 +24,17 @@
                 (at end (increase (act-cost) (dummy))))
 )
 
+(:action take_ass
+	:parameters (?v - robot ?r - region ?ass - ass)
+	:precondition (and (ass_in ?ass ?r) (robot_in ?v ?r) (< (ass_on_rob) 2) (not (on_robot ?ass)))
+	:effect (and (not (ass_in ?ass ?r)) (on_robot ?ass) (increase (ass_on_rob) 1))
+)
 
-;;(:durative-action localize
-;; ...................
-;;)
-
-
+(:action drop_ass
+	:parameters (?v - robot ?r - region ?ass - ass)
+	:precondition (and (on_robot ?ass) (robot_in ?v ?r))
+	:effect (and (not (on_robot ?ass)) (ass_in ?ass ?r) (decrease (ass_on_rob) 1)) 
+)
 
 )
 

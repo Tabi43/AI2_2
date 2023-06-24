@@ -35,6 +35,7 @@ class Graph {
 
         int number_of_vertices;  // number of vertices
         vector<vector<Edge>> adjacencyList;
+        int k;
 
         int parseWayPoint(string wayPointName);
         void addEdge(int source, int destination, double weight); 

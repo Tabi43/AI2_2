@@ -1,20 +1,32 @@
 (define (problem prob1)
 (:domain localization)
 (:objects
-     r0 r1 r2 r3 r4 - region
+     a1 a2 a3 a4 - ass
+     r0 r1 r2 r3 r4 r5 - region
      R2D2 - robot
 )
 (:init
-    (robot_in R2D2 r0)
+     (robot_in R2D2 r0)
 
-    (= (act-cost) 0)
-    (= (dummy) 0)
-
+     (= (act-cost) 0)
+     (= (dummy) 0)
+     (= (ass_on_rob) 0)
+     (ass_in a1 r1)
+     (ass_in a2 r2)
+     (ass_in a3 r3)
+     (ass_in a4 r4)
+     (sub_desk r5)
  
 )
 (:goal 
-     (and (visited r1)  (visited r2)
-          (visited r3) (visited r4) )
+     (and  
+          ;(ass_in a1 r5)
+          ;(ass_in a2 r5)
+          ;(ass_in a3 r5)
+          ;(ass_in a4 r5)
+          
+          (on_robot a1)
+     )
 )
 (:metric minimize (act-cost) )
 )

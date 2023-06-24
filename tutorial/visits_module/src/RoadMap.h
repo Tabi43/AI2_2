@@ -24,7 +24,6 @@ class RoadMap{
     private:
         double** graph;
         int dimension;
-        double k;
 
         bool isLinked(int a, int b);
 

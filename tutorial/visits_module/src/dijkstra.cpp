@@ -19,6 +19,7 @@ struct Waypoint {
 Graph::Graph(int n){
     number_of_vertices = n;        
     adjacencyList = vector<vector<Edge>>(number_of_vertices);
+    k = 6;
 }
 
 Graph::~Graph(){
@@ -97,24 +98,28 @@ void Graph::buildRoadMap(map<string, vector<double>> waypoint){
             double dst = INT_MAX; 
             if(name != wayPointName) dst = sqrt(pow(position[0] - pos[0], 2) + pow(position[1] - pos[1], 2));
             distances[name] = dst;
-        }
-        //dovrebbe essere k non 5       
-        for(int i = 0; i < 5; i++){
-            double min = INT_MAX;
-            string index;
-            for (std::map<string, double>::iterator d = distances.begin(); d != distances.end(); ++d) {
-                if(min > d->second){
-                    min = d->second;
-                    index = d->first;
-                }  
-            }
+        }      
+        
+        // Order the distances map by value (ascending order)
+        vector<pair<string, double>> sortedDistances(distances.begin(), distances.end());
+        sort(sortedDistances.begin(), sortedDistances.end(),
+            [](const pair<string, double>& a, const pair<string, double>& b) {
+                return a.second < b.second;
+            });
+
+        // Take the first k nearest waypoints and add edges to the graph
+        int count = 0;
+        for (const auto& pair : sortedDistances) {
+            if (count >= k) break;
+            string index = pair.first;
             int source = parseWayPoint(wayPointName);
             int destination = parseWayPoint(index);
             addEdge(source, destination, distances[index]);
-            distances[index] = INT_MAX;
-        } 
+            count++;
+        }
+
     }
-}
+} 
 
 /*Function which return the waypoint index by its name*/
 int Graph::parseWayPoint(string wayPointName){
