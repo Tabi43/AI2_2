@@ -20,12 +20,10 @@
 )
 (:goal 
      (and  
-          ;(ass_in a1 r5)
-          ;(ass_in a2 r5)
-          ;(ass_in a3 r5)
-          ;(ass_in a4 r5)
-          
-          (on_robot a1)
+          (ass_in a1 r5)
+          (ass_in a2 r5)
+          (ass_in a3 r5)
+          (ass_in a4 r5)
      )
 )
 (:metric minimize (act-cost) )

@@ -80,6 +80,7 @@ map<string,double> VisitSolver::callExternalSolver(map<string,double> initialSta
   map<string, double>::iterator isEnd = initialState.end();
   double dummy;
   double act_cost;
+  double ass_on_rob;
 
 
   map<string, double> trigger;
@@ -119,6 +120,9 @@ map<string,double> VisitSolver::callExternalSolver(map<string,double> initialSta
       }
       else if(function=="act-cost"){
         act_cost = value;
+      } 
+      else if(function=="ass_on_rob"){
+        ass_on_rob = value;
       } 
       //else if(function=="dummy1"){
       //duy = value;              

@@ -24,17 +24,32 @@
                 (at end (increase (act-cost) (dummy))))
 )
 
-(:action take_ass
-	:parameters (?v - robot ?r - region ?ass - ass)
-	:precondition (and (ass_in ?ass ?r) (robot_in ?v ?r) (< (ass_on_rob) 2) (not (on_robot ?ass)))
-	:effect (and (not (ass_in ?ass ?r)) (on_robot ?ass) (increase (ass_on_rob) 1))
+(:durative-action take_ass
+  :parameters (?v - robot ?r - region ?ass - ass)
+  :duration (= ?duration 1)
+  :condition (and (at start (ass_in ?ass ?r))
+                  (at start (robot_in ?v ?r))
+                  (at start (< (ass_on_rob) 2))
+            )
+  :effect (and (at start (not (ass_in ?ass ?r)))
+               (at end (on_robot ?ass))
+               (at end (increase (ass_on_rob) 1)))
 )
 
-(:action drop_ass
-	:parameters (?v - robot ?r - region ?ass - ass)
-	:precondition (and (on_robot ?ass) (robot_in ?v ?r))
-	:effect (and (not (on_robot ?ass)) (ass_in ?ass ?r) (decrease (ass_on_rob) 1)) 
+(:durative-action drop_ass
+  :parameters (?v - robot ?r - region ?ass ?asss - ass)
+  :duration (= ?duration 1)
+  :condition (and (at start (on_robot ?ass))
+  				  (at start (on_robot ?asss))
+                  (at start (robot_in ?v ?r))				  
+				)
+  :effect (and (at start (not (on_robot ?ass)))
+				(at start (not (on_robot ?asss)))
+               (at end (ass_in ?ass ?r))
+			   (at end (ass_in ?asss ?r))
+               (at end (decrease (ass_on_rob) 2)))
 )
+
 
 )
 
