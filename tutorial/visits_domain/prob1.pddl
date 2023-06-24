@@ -1,7 +1,7 @@
 (define (problem prob1)
 (:domain localization)
 (:objects
-     a1 a2 a3 a4 - ass
+     a1 a2 a3 a4 - assignment
      r0 r1 r2 r3 r4 r5 - region
      R2D2 - robot
 )

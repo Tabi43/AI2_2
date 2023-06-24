@@ -3,11 +3,11 @@
 (:requirements :typing :durative-actions :numeric-fluents :negative-preconditions :action-costs :conditional-effects :equality :fluents )
 
 
-(:types 	robot region ass
+(:types 	robot region assignment
 )
 
 (:predicates
-	(robot_in ?v - robot ?r - region) (visited ?r - region ) (ass_in ?a - ass ?x - region) (on_robot ?a - ass) (sub_desk ?r - region)
+	(robot_in ?v - robot ?r - region) (visited ?r - region ) (ass_in ?a - assignment ?x - region) (on_robot ?a - assignment) (sub_desk ?r - region)
 	      
 )
 
@@ -25,7 +25,7 @@
 )
 
 (:durative-action take_ass
-  :parameters (?v - robot ?r - region ?ass - ass)
+  :parameters (?v - robot ?r - region ?ass - assignment)
   :duration (= ?duration 1)
   :condition (and (at start (ass_in ?ass ?r))
                   (at start (robot_in ?v ?r))
@@ -37,7 +37,7 @@
 )
 
 (:durative-action drop_ass
-  :parameters (?v - robot ?r - region ?ass ?asss - ass)
+  :parameters (?v - robot ?r - region ?ass ?asss - assignment)
   :duration (= ?duration 1)
   :condition (and (at start (on_robot ?ass))
   				  (at start (on_robot ?asss))
