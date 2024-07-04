@@ -23,7 +23,8 @@ node with the k (which is equal to 5) nearest one. The graph obtained,
 shown in the Figure below, is an oriented weighted graph; where the
 weight of the edges is given by the distance between the nodes.
 
-![Graph](graph.png){#map}
+![graph](https://github.com/Tabi43/Bender/assets/114100814/a41ca6d2-7b7b-4cc6-9f13-e585365775b0)
+
 
 In order to move around in the graph, the Dijkstra algorithm has been
 implemented. It computes the shortest path among two nodes, which are
