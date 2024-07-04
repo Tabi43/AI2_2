@@ -1,6 +1,6 @@
-# AI for Robotics II
-## Assignment 2: Task and Motion Planning
-### Introduction
+## Artificial Intelligence for Robotics Assignment II
+
+## Introduction
 
 The aim of this assignment is to work on task motion planning, focusing
 on the merge of cpp code with a planning problem.\
@@ -9,7 +9,7 @@ assignment reports placed in the corner of the environment given and
 bringing them to the submission desk while minimizing its motion cost.
 The motion cost is the length of the path covered by the robot.
 
-### Mapping
+## Mapping
 
 Firstly, with the aim of mapping the environment, all the way-points
 have been chosen, starting with the points given. All the
@@ -32,7 +32,7 @@ given by input, and returns the path as a list of way-point and the
 actual distance between them by summing all the edges weight. This class
 is then used in `VisitSolver`.
 
-### CPP
+## CPP
 
 The provided `VisitSolver` file has been modified to adapt the previous
 code to the new functionalities. As first step the variable `roadMap`
@@ -47,7 +47,7 @@ Dijkstra algorithm function of the `roadMap`.\
 At this point a modification to the CMake file was needed: the file
 roadmap.cpp has been added in add_library and add_executable.
 
-### PDDL
+## PDDL
 
 Concerning the PDDL, it has been necessary to modify as follows the
 domain and the problem files given. This has been done in order to take
